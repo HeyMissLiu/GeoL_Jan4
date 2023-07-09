@@ -1,0 +1,18 @@
+.color-blue {
+    color: blue;
+  }
+  .color-red {
+    color: red;
+  }
+  .color-yellow {
+    color: yellow;
+  }
+  .color-green {
+    color: green;
+  }
+  .fs100 {
+    font-size: 100px;
+  }
+  span{
+    float: left;
+  }
