@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8" />
+		<title>动态伪类</title>
+		<style type="text/css">
+			input:hover{
+                border:1px solid red; 
+            }
+            [id="input"]:focus{
+                background-color: orange;
+            }
+            [id="password"]:focus{
+                background-color: yellow;
+            }
+		</style>
+	</head>
+	<body>
+		用户名：
+        <input type="text" id="input">
+        <br>
+        密码：
+        <input type="password" id="password">
+	</body>
+</html>
