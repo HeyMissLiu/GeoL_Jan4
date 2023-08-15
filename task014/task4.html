@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 1000px;
+            height: 804px;
+            margin: 0 auto;
+        }
+        .main{
+            width: 984px;
+            height: 480px;
+            margin: 0 auto;
+        }
+        .main img{
+            width: 984px;
+            height: 480px;
+        }
+        .else{
+            width: 984px;
+            height: 120px;
+            margin: 40px auto;
+        }
+        .other{
+            width: 87.5px;
+            height: 120px;
+        }
+        .lr{
+            /*设置为float:left;不行，不清楚原因*/
+            display: inline-block;
+        }
+        .left{
+            margin-left: 35.8px;
+        }
+        .else img{
+            width: 87.75px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            cursor: pointer;    
+        }
+        span{
+            font-size: 16px;
+            color: black;
+            /*必须设置为块元素，否则居中失效*/
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <a href="https://www.opposhop.cn/cn/web/products/23373.html">
+                <img src="https://dsfs.oppo.com/archives/202304/20230407040444642fda9044b31.jpg" alt="">
+            </a>
+        </div>
+        <div class="else">
+            <div class="other lr">
+                <a href="https://www.opposhop.cn/cn/web/category/010504?code=010504&title=OPPO%E6%89%8B%E6%9C%BA%E4%B8%93%E5%8C%BA&tab=2767&us=fenleiye">
+                    <img src="./img/oppo1.png" alt="">
+                    <span>Find N 系列</span>
+                </a>
+            </div>
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/category/010504?code=010504&title=OPPO%E6%89%8B%E6%9C%BA%E4%B8%93%E5%8C%BA&tab=464&us=fenleiye">
+                    <img src="./img/oppo2.png" alt="">
+                    <span>Find X 系列</span>
+                </a>
+            </div>    
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/category/010504?code=010504&title=OPPO%E6%89%8B%E6%9C%BA%E4%B8%93%E5%8C%BA&tab=254&us=fenleiye">
+                    <img src="./img/oppo3.png" alt="">
+                    <span>Reno系列</span>
+                </a>
+            </div>
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/category/010504?code=010504&title=OPPO%E6%89%8B%E6%9C%BA%E4%B8%93%E5%8C%BA&tab=255&us=fenleiye">
+                    <img src="./img/oppo4.png" alt="">
+                    <span>K系列</span>
+                </a>
+            </div>
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/category/010504?code=010504&title=OPPO%E6%89%8B%E6%9C%BA%E4%B8%93%E5%8C%BA&tab=256&us=fenleiye">
+                    <img src="./img/oppo5.png" alt="">
+                    <span>A系列</span>
+                </a>
+            </div>
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/products/commodity?cata=000019&sub_cata=003842">
+                    <img src="./img/oppo6.png" alt="">
+                    <span>蓝牙耳机</span>
+                </a>
+            </div>
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/products/commodity?cata=000034&sub_cata=004212">
+                    <img src="./img/oppo7.png" alt="">
+                    <span>智能穿戴</span>
+                </a>
+            </div>
+            <div class="other lr left">
+                <a href="https://www.opposhop.cn/cn/web/products/commodity?cata=000035&sub_cata=003523">
+                    <img src="./img/oppo8.png" alt="">
+                    <span>平板电脑</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
