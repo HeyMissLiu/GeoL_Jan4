@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 650px;
+            height: 360px;
+            position: relative;
+            margin: 100px auto;
+        }
+        .picture{
+            z-index: 100;
+
+        }
+        .title{
+            width: 610px;
+            height: 40px;
+            background-color: #808080;
+            z-index: 200;
+            position: absolute;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 1s linear 0s;
+            color: black;
+            line-height: 40px;
+            padding-left: 40px;
+        }
+        .container:hover .title{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="picture">
+            <img src="./img/素材/1.jpg" alt="">
+        </div>
+        <div class="title">鸟巢</div>
+    </div>
+</body>
+</html>
