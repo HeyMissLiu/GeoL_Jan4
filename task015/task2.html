@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 520px;
+            height: 280px;
+            margin: 50px auto;
+            border: 1px solid;
+            position: relative;
+        }
+        .left img{
+            position: absolute;
+            top: 50%;
+            margin-top: -18px;
+            left: 0;
+            z-index: 200;
+        }
+        .mix img{
+            position: absolute;
+            width: 520px;
+            height: 280px;
+            z-index: 100;
+        }
+        .right img{
+            position: absolute;
+            top: 50%;
+            margin-top: -18px;
+            right: 0;
+            z-index: 200;
+        }
+        .point{
+            width: 63px;
+            height: 9px;
+            z-index: 200;
+            position: absolute;
+            right: 50%;
+            margin-right: -30px;
+            bottom: 20px;
+        }
+        .status_point{
+            float: left;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="./img/mix轮播图/img/left.png" alt="">
+        </div>
+        <div class="mix">
+            <img src="./img/mix轮播图/img/mix.jpg" alt="">
+        </div>
+        <div class="right">
+            <img src="./img/mix轮播图/img/right.png" alt="">
+        </div>
+        <div class="point">
+            <div class="status_point" style="background-color: #ff4400;"></div>
+            <div class="status_point" style="background-color: #b7b7b7;"></div>
+            <div class="status_point" style="background-color: #b7b7b7;"></div>
+            <div class="status_point" style="background-color: #b7b7b7;"></div>
+            <div class="status_point" style="background-color: #b7b7b7;"></div>
+        </div>
+    </div>
+</body>
+</html>

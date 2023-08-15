@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 1000px;
+            height: 600px;
+            background-color: #fff;
+            border: 1px solid black;
+            margin: 50px auto;
+            position: relative;
+            top: 0;
+            right: 0;
+        }
+        .left img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            z-index: 200;
+        }
+        .middle img{
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 950px;
+            z-index: 100;
+        }
+        .right img{
+            width: 100px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 200;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="./img/蜜雪冰城/img/top_tu.gif" alt="">
+        </div>
+        <div class="middle">
+            <img src="./img/蜜雪冰城/img/adv1.png" alt="">
+        </div>
+        <div class="right">
+            <img src="./img/蜜雪冰城/img/br.gif" alt="">
+        </div>
+    </div>
+</body>
+</html>

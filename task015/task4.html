@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1212px;
+            height: 860px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+        .top{
+            width: 1212px;
+            height: 64px;
+            margin: 0 auto;
+            background-color: #f1f3f5;
+        }
+        .box{
+            width: 1212px;
+            height: 796px;
+            background-color: #f1f3f5;
+            margin: 0 auto;
+        }
+        .title{
+            font-size: 14px;
+            color: #b8babb;
+            margin: 22px 20px 22px 0;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        .product{
+            width: 291px;
+            height: 386px;
+            margin:6px;
+            border: 0px solid;
+            background-color: #fff;
+            position: relative;
+        }
+        .product:hover{
+            box-shadow: 0 0 12px rgba(0,0,0,0.24);
+        }
+        a{
+            text-decoration: none;
+        }
+        .png{
+            width: 291px;
+            height: 254px;
+            position: relative;
+        }
+        .png img{
+            width: 181px;
+            height: 193px;
+            position: absolute;
+            top: 50%;
+            margin-top: -96.5px;
+            left: 50%;
+            margin-left: -90.5px;
+        }
+        .info{
+            width: 243px;
+            height: 98px;
+            padding: 10px 24px 24px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .name{
+            width: 243px;
+            height: 19px;
+            font-size: 14px;
+            color: black;
+            position: relative;
+        }
+        .new{
+            width: 30px;
+            height: 14px;
+            font-size: 12px;
+            color: white;
+            background-color: red;
+            border-radius: 5px;
+            position: absolute;
+            left: 18px;
+            top: 2px;
+        }
+        .name span{
+            position: absolute;
+            left: 50px;
+        }
+        .tag{
+            width: 243px;
+            height: 18px;
+            margin: 4px 0 0;
+            font-size: 13px;
+            color: #7f7f7f;
+        }
+        .discount{
+            width: 243px;
+            height: 17px;
+            margin: 8px 0 0;
+            position: relative;
+            font-size: 12px;
+            color: black;
+        }
+        .price{
+            width: 243px;
+            height: 33px;
+            font-size: 16px;
+            color: black;
+            position: relative;
+        }
+        .price span{
+            position: absolute;
+            left: 80px;
+            bottom: 0;
+        }
+        .discount1_1{
+            width: 88.025px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0;
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+            left: 40px;
+        }
+        .discount1_2{
+            width: 44px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0 4px;
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+            left: 139px;
+        }
+        .discount3_1{
+            width: 88.025px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0;
+            border-radius: 5px;
+            border: 0.5px solid red;
+            color: red;
+            position: absolute;
+            top: 1.2px;
+        }
+        .discount3_2{
+            width: 81.350px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0 4px;
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+            left: 96px;
+        }
+        .discount3_3{
+            width: 44px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0 4px;
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+            left: 189px;
+        }
+        .discount5_1{
+            width: 64.025px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0;
+            border: 0.5px solid red;
+            color: red;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+        }
+        .discount5_2{
+            width: 81.350px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0 4px;
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+            left: 72px;
+        }
+        .discount5_3{
+            width: 44px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px 0 0 4px;
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            position: absolute;
+            top: 1.2px;
+            left: 165px;
+        }
+        .discount6{
+            width: 147.162px;
+            height: 14.4px;
+            padding: 0 4px;
+            border: 0.8px;
+            margin: 0.5px;
+            border: 0.5px solid red;
+            color: red;
+            border-radius: 5px;
+            position: absolute;
+            left: 40px;
+            top: 1.2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="title left" style="font-size: 20px; color: #3f3f3f; margin: 18px 20px 18px 6px;">电脑</div>
+            <div class="title left">笔记本</div>
+            <div class="title left">精品平板</div>
+            <div class="title left">台式机</div>
+            <div class="title left">显示器</div>
+            <div class="title left">电脑配件</div>
+            <div class="title right">更多&gt;</div>
+        </div>
+        <div class="box">
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086390192446&sbomCode=2801010155102">
+                    <div class="png">
+                        <img src="https://res5.vmallres.com/pimages/uomcdn/CN/pms/202306/gbom/6941487298976/800_800_F902AD5D19AD0CD8B517A8A2FBF5BA8Cmp.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <div class="new">新品</div>
+                            <span>HUAWEI MateBook X Pro</span>
+                        </div>
+                        <div class="tag">
+                            <span>微绒金属机身 | 3.1K原色全面屏</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount1_1">
+                                <span>12期0分期利息</span>
+                            </div>
+                            <div class="discount1_2">
+                                <span>赠积分</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥13999</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086948116819&sbomCode=2801010155306">
+                    <div class="png">
+                        <img src="https://res1.vmallres.com/pimages/uomcdn/CN/pms/202305/gbom/6941487298518/800_800_872FCF1227134D624F98DA1C6636484Bmp.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <div class="new">新品</div>
+                            <span>HUAWEI MateBook 16s</span>
+                        </div>
+                        <div class="tag">
+                            <span>2.5K高色准触控屏|13代酷睿i9标压处理器</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount1_1">
+                                <span>12期0分期利息</span>
+                            </div>
+                            <div class="discount1_2">
+                                <span>赠积分</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥9999</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086166738835&sbomCode=2801010156601">
+                    <div class="png">
+                        <img src="https://res3.vmallres.com/pimages/uomcdn/CN/pms/202305/gbom/6941487299614/800_800_5B07C33C7D028A83A2883787DDDF16AEmp.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <div class="new">新品</div>
+                            <span>HUAWEI MateBook 14</span>
+                        </div>
+                        <div class="tag">
+                            <span>2K触控全面屏 | 13代酷睿处理器</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount3_1">
+                                <span>限时直降200元</span>
+                            </div>
+                            <div class="discount3_2">
+                                <span>3期0分期利息</span>
+                            </div>
+                            <div class="discount3_3">
+                                <span>赠积分</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥5499</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086618122510&sbomCode=2801010100329">
+                    <div class="png">
+                        <img src="https://res.vmallres.com/uomcdn/CN/cms/202207/F94A50F90147F827D72F70FC1C90A104.png" alt="" style="width: 291px; height: 254px; position: absolute; top: 50%; margin-top: -127px; left: 50%; margin-left: -145.5px;">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <span style="position: absolute; left: 30px;">MateBook X Pro 微绒典藏版</span>
+                        </div>
+                        <div class="tag">
+                            <span>微绒金属机身 | 12代酷睿处理器</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount1_1">
+                                <span>12期0分期利息</span>
+                            </div>
+                            <div class="discount1_2">
+                                <span>赠积分</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥10499</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086553037702&sbomCode=2801010130207">
+                    <div class="png">
+                        <img src="https://res.vmallres.com/cmscdn/CN/2022-09/5329cfd358e44601a6adeea655a079d7.jpg" alt="" style="width: 291px; height: 254px; position: absolute; top: 50%; margin-top: -127px; left: 50%; margin-left: -145.5px;">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <div class="new">新品</div>
+                            <span>HUAWEI MateBook 14s</span>
+                        </div>
+                        <div class="tag">
+                            <span>12代酷睿标压 | 14.2英寸触控屏</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount5_1">
+                                <span>秒杀省800</span>
+                            </div>
+                            <div class="discount5_2">
+                                <span>3期0分期利息</span>
+                            </div>
+                            <div class="discount5_3">
+                                <span>赠积分</span>
+                            </div>  
+                        </div>
+                        <div class="price">
+                            <span>￥5999</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086618122510&sbomCode=2801010100325">
+                    <div class="png">
+                        <img src="https://res1.vmallres.com/pimages/uomcdn/CN/pms/202207/gbom/6941487262915/800_800_0734AA176A25064EDB37B01BF0821362mp_tds.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <span style="position: absolute; left: 30px;">MateBook X Pro 12代酷睿</span>
+                        </div>
+                        <div class="tag">
+                            <span>3.1K原色全面屏 | 12代酷睿处理器</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount1_1">
+                                <span>12期0分期利息</span>
+                            </div>
+                            <div class="discount1_2">
+                                <span>赠积分</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥8499</span>
+                        </div>
+                    </div>
+                    
+                </a>
+            </div> 
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086025938879&sbomCode=2801010094815">
+                    <div class="png">
+                        <img src="https://res6.vmallres.com/pimages/uomcdn/CN/pms/202205/gbom/6941487258161/800_800_0E4244A9C3C2401EA28A6011C8D468FDmp_tds.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <span style="position: absolute; left: 70px;">MateBook D 15</span>
+                        </div>
+                        <div class="tag">
+                            <span>15.6"护眼全面屏</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount3_1">
+                                <span>限时直降400元</span>
+                            </div>
+                            <div class="discount3_2">
+                                <span>3期0分期利息</span>
+                            </div>
+                            <div class="discount3_3">
+                                <span>赠积分</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥3999</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="product left">
+                <a href="https://www.vmall.com/product/comdetail/index.html?prdId=10086076390403&sbomCode=2701010066601">
+                    <div class="png">
+                        <img src="https://res4.vmallres.com/pimages/uomcdn/CN/pms/202209/gbom/6901443248285/800_800_C12B290AE540592E839F44A5195A1F3Emp_tds.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            <span style="position: absolute; left: 75px;">MateBook SE</span>
+                        </div>
+                        <div class="tag">
+                            <span>教育中心  | 10.1英寸全面高清大屏</span>
+                        </div>
+                        <div class="discount">
+                            <div class="discount6">
+                                <span>最高省300 | 3期0分期利息</span>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>￥1499</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
