@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var phoneNumber = prompt("请输入11位手机号：");
+      var bitsNumber = 0;
+      var isletter = isNaN(phoneNumber);
+      //判断是否为纯数字，如果不是直接提示错误
+      if (isletter == true) {
+        alert("输入错误！");
+      } else {
+        phoneNumber = parseInt(phoneNumber);
+        //使用除法判断位数
+        while (phoneNumber >= 1) {
+          phoneNumber /= 10;
+          bitsNumber++;
+        }
+        if (bitsNumber == 11) alert("输入正确！");
+        else alert("输入错误！");
+      }
+    </script>
+  </body>
+</html>

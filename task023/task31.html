@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for(var towels = 0; towels <= 20 ; towels++){
+            for(toothbrushes = 0; toothbrushes <= 50; toothbrushes++){
+                for(var toothpaste = 0; toothpaste <= 10; toothpaste++){
+                    if(towels*5 + toothpaste*10 + toothbrushes*2 === 100) 
+                    console.log("可以买毛巾" + towels + "个，牙刷" + toothbrushes + "支，牙膏" + toothpaste + "只。")
+                }
+            }
+        }
+        alert("请在控制台查看结果！");
+    </script>
+</body>
+</html>

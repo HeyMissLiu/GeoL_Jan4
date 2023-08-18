@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sex = prompt("请输入您的性别：");
+        var height = prompt("请输入您的身高(单位：cm)：");
+        height = parseFloat(height);
+        var weight = prompt("请输入您的体重(单位：Kg)：");
+        weight = parseFloat(weight);
+        //计算标准体重
+        var manStandartWeight = (height-80) * 0.7;
+        var womanStandardWeight = (height-70) * 0.6;
+        if(sex === "男"){
+            if(weight>manStandartWeight*0.95 && weight<manStandartWeight*1.05) alert("体重正常");
+            else if(weight<manStandartWeight*0.95) alert("太瘦了，要多补充营养哦");
+            else alert("该锻炼身体减肥了哦");
+        }
+        else if(sex === "女"){
+            if(weight>womanStandardWeight*0.95 && weight<womanStandardWeight*1.05) alert("体重正常")
+            else if(weight<womanStandardWeight*0.95) alert("太瘦了，要多补充营养哦");
+            else alert("该锻炼身体减肥了哦");
+        }
+    </script>
+</body>
+</html>

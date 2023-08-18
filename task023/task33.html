@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var target = Math.round(Math.random()*40);
+        var guess = Number(prompt("你来猜?，输入一个0~40之间的数字："));
+        var chance = 5;
+        while(chance){
+            chance--;
+            if(chance ===0 ){
+                alert("次数用尽，数字为" + target);
+                break;
+            }
+            if(guess < target) alert("猜小了，你还有" + chance + "次机会！");
+            else if(guess > target) alert("猜大了，你还有" + chance + "次机会！")
+            else{
+                alert("恭喜你，猜中啦！");
+                break;
+            }
+            guess = Number(prompt("你来猜?，输入一个0~40之间的数字："));
+        }
+    </script>
+</body>
+</html>

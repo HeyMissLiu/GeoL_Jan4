@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var sideLength = prompt("请输入正方形的边长：");
+      if (isNaN(sideLength) === true) alert("输入有误，请重新输入!");
+      else {
+        var square = Math.pow(Number(sideLength), 2);
+        alert("此正方形的面积是" + square);
+      }
+    </script>
+  </body>
+</html>

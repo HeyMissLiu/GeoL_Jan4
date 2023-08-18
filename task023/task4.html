@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var number = prompt("请输入一个正整数：");
+      number = parseInt(number);
+      var tag = number;
+      var result = 0;
+      var bit = 0;
+      while (number >= 1) {
+        bit = number % 10;
+        result += Math.pow(bit, 3);
+        number = Math.floor(number / 10);
+      }
+      if (result === tag) alert("数字正确！");
+      else alert("数字不正确！");
+    </script>
+  </body>
+</html>

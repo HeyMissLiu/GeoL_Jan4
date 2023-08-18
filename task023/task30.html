@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for(var rabbits = 0; rabbits <= 35; rabbits++){
+            var hens = 35 - rabbits;
+            var feet = rabbits*4 + hens*2;
+            if(feet === 94) break;
+        }
+        alert("共有鸡" + hens +"只，兔子" + rabbits +"只。");
+    </script>
+</body>
+</html>

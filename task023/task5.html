@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var number1 = prompt("请输入第一个数字：");
+      var number2 = prompt("请输入第二个数字：");
+      var number3 = prompt("请输入第三个数字：");
+      var number4 = prompt("请输入第四个数字：");
+      number1 = parseInt(number1);
+      number2 = parseInt(number2);
+      number3 = parseInt(number3);
+      number4 = parseInt(number4);
+      var max;
+      if (number1 > number2) {
+        max = number1;
+        if (max < number3) max = number3;
+        if (max < number4) max = number4;
+      } else {
+        max = number2;
+        if (max < number3) max = number3;
+        if (max < number4) max = number4;
+      }
+      alert("最大的数字为" + max + "!");
+    </script>
+  </body>
+</html>

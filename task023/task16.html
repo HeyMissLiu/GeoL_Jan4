@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var number1 = prompt("请输入第一个数字：");
+      var number2 = prompt("请输入第二个数字：");
+      if (isNaN(number1) === true || isNaN(number2) === true)
+        alert("输入有误，请重新输入！");
+      else {
+        number1 = Number(number1);
+        number2 = Number(number2);
+        var sum = number1 + number2;
+        var sub = number1 - number2;
+        var mul = number1 * number2;
+        var div = number1 / number2;
+        var remainder = number1 % number2;
+        console.log(number1 + "+" + number2 + "=" + sum);
+        console.log(number1 + "-" + number2 + "=" + sub);
+        console.log(number1 + "*" + number2 + "=" + mul);
+        console.log(number1 + "/" + number2 + "=" + div);
+        console.log(number1 + "%" + number2 + "=" + remainder);
+        alert("按F12打开控制台查看结果");
+      }
+    </script>
+  </body>
+</html>
