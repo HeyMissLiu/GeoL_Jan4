@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //判断是否为喇叭花数
+        function morningGloryNumber(num){
+            var ones = num % 10;
+            //先做除法去掉个位（需要向下取整），再取模得到十位
+            var tens = Math.floor(num / 10)  % 10;
+            var hundreds = Math.floor(num / 100);
+            var total = factorial(hundreds) + factorial(tens) + factorial(ones);
+            if(num === total){
+                 return 1;
+            }
+             return 0;
+        }
+        //计算阶乘
+        function factorial(num){
+            for(var i = num, result = 1; i > 0; i--){
+                result *= i;
+            }
+            return result;
+        }
+        //找出所有的喇叭花数
+        for(var i = 100; i < 1000; i++){
+            if(morningGloryNumber(i) === 1){
+                console.log(i + "是喇叭花数！");
+            }
+        }
+    </script>
+</body>
+</html>

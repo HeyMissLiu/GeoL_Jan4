@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function primeNumber(num){
+            var result;
+            for(var i = 2; i < num; i++){
+                for(var j = 2; j < num; j++){
+                    result = i*j;
+                    if(result === num) return false;
+                }
+            }
+            return true;
+        }
+        console.log(primeNumber(3));
+        console.log(primeNumber(8));
+    </script>
+</body>
+</html>
