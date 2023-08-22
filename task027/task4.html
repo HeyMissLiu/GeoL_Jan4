@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function deepClone(arr){
+            var finalarr = [];
+            for(var i = 0; i < arr.length; i++){
+                if(Array.isArray[arr[i]]){
+                    finalarr[i] = deepClone(arr[i]);
+                }
+                finalarr[i] = arr[i];
+            }
+            return finalarr;
+        }
+        var arr1 = [33, 44, [55, 66], [77, 88, [99, 11], [22, 33]]];
+        var arr2 = deepClone(arr1);
+        console.log(arr2);
+    </script>
+</body>
+</html>
