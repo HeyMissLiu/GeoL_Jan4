@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义函数
+        function checkTicket(checkHeight,checkAge){
+            //生成目标功能函数
+            return function(height,age){
+                if(height <= checkHeight && age <= checkAge) console.log("恭喜你小朋友, 你可以买儿童票, 玩得开心!");
+                else console.log("很遗憾, 你不符合购买儿童票的条件!");
+            }
+        }
+        //调用功能函数，输入各个游乐场的标准
+        var carnieA = checkTicket(100,6);
+        var carnieB = checkTicket(120,5);
+        var carnieC = checkTicket(90,7);
+        //使用函数检测结果
+        carnieA(110,5);
+        carnieB(110,5);
+        carnieC(110,5);
+    </script>
+</body>
+</html>
