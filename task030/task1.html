@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>前端技术</div>
+    <div>IOS技术</div>
+    <div>安卓技术</div>
+    <div>JAVA技术</div>
+    <script>
+        var adiv = document.getElementsByTagName('div');
+        for(var i = 0; i < adiv.length; i++){
+            adiv[i].innerText = "我要学习最牛叉的" + adiv[i].innerText;
+        }
+    </script>
+</body>
+</html>

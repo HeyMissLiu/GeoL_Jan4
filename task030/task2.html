@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <table id="mytable"></table>
+    <script>
+        //找到父元素节点
+        var table = document.getElementById('mytable');
+        //创建一个tr元素节点，一个td元素节点，方便后面克隆
+        var td = document.createElement('td');
+        var tr = document.createElement('tr');
+        //克隆12个td元素节点作为tr的子节点
+        for(var i = 0; i < 12; i++){
+            trchild = td.cloneNode();
+            tr.appendChild(trchild);
+        }
+        //克隆20个tr元素节点作为table的子节点
+        for(var i = 0; i < 20; i++){
+            tableChild = tr.cloneNode(true);
+            table.appendChild(tableChild);
+        }
+    </script>
+</body>
+</html>

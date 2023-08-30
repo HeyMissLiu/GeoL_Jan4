@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+            <div>one</div>
+            <div>two</div>
+            <div>three</div>
+            <div>four</div>
+    </body>
+    <script>
+        //获取所有的div节点
+        var childs = document.getElementsByTagName("div");
+
+        //定义函数，参数为第几个子节点
+        function getSibling(num){
+
+            var result = [];
+            var next = [];
+            var previous = [];
+
+            //定义临时变量
+            var temp1 = temp2 = num;
+
+            //找哥哥
+            while(temp1 > 1){   
+                previous.push(childs[temp1 - 1].previousElementSibling);
+                temp1--;
+            }
+
+            //找弟弟
+            while(temp2 < childs.length){
+                next.push(childs[temp2 - 1].nextElementSibling);
+                temp2++;
+            }
+            
+            //将previous和next数组合并
+            result = previous.concat(next);
+
+            return result;
+        }
+        console.log(getSibling(2));
+    </script>
+</html>

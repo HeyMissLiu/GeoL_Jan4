@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 120px;
+            height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <table id="mytable"></table>
+    <script>
+        //获取table节点
+        var table = document.getElementById("mytable");
+        //嵌套循环创建tr和td并挂在dom树上
+        for(var i = 1; i < 10; i++){
+            //创建新的tr节点
+            var tr = document.createElement("tr");
+            for(var j = 1; j < i+1; j++){
+                //创建新的td节点
+                var td = document.createElement("td");
+                //将乘法表内容输入td内
+                td.innerHTML = j + "*" + i + "=" + i*j;
+                //成为tr节点的子节点
+                tr.appendChild(td);
+            }
+            //成文table的子节点
+            table.appendChild(tr);
+        }
+    </script>
+</body>
+</html>
