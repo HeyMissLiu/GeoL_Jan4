@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            padding: 200px;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="mydiv"></div>
+    <br>
+    <button id="btn1">变长</button>
+    <button id="btn2">变宽</button>
+    <button id="btn3">变绿</button>
+</body>
+<script>
+    //获取div和3个按钮
+    var div = document.getElementById("mydiv");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    //定义鼠标点击事件函数
+    btn1.onclick = function(){
+        div.style.height = "400px";
+    }
+    btn2.onclick = function(){
+        div.style.width = "400px";
+    }
+    btn3.onclick = function(){
+        div.style.backgroundColor = "green";
+    }
+</script>
+</html>

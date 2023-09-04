@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+<body>
+    请选择您喜欢的颜色：
+    <select name="" id="color">
+        <option value="white">请选择</option>
+        <option value="yellow">黄色</option>
+        <option value="orange">橘色</option>
+        <option value="pink">粉色</option>
+        <option value="purzple">紫色</option>
+    </select>
+    <div>我是div</div>
+</body>
+<script>
+    //找到操作对象
+    var div = document.querySelector("div");
+    var select = document.getElementById("color");
+    select.onchange = function(){
+        if(this.value === "white"){
+            div.innerText = "我没有发生任何变化";
+            div.style.backgroundColor = this.value;
+        }
+        else {
+            div.innerText = "我的背景颜色变成了" + this.value +"色";
+            div.style.backgroundColor = this.value;
+        }
+    }
+</script>
+</html>

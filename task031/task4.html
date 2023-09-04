@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    姓名：<input type="text">
+    <span></span>
+</body>
+<script>
+    //找到要操作的对象
+    var input = document.querySelector("input");
+    var span = document.querySelector("span");
+
+    //定义获取焦点事件函数
+    input.onfocus = function(){
+        if(this.value.length === 0){
+            span.innerText = "请输入您的姓名";
+        }
+    }
+    input.onblur = function(){
+        if(this.value.length === 0)
+        span.innerText = "用户名不能为空"
+        this.style.borderColor = "red";
+    }
+</script>
+</html>

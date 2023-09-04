@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>字数限制在30字内,
+        <span>您还可以输入
+            <b>30</b>字
+        </span>
+    </p>
+    <textarea name="" id="text" cols="50" rows="7"></textarea>
+</body>
+<script>
+    //找到textarea对象
+    var textarea = document.getElementById("text");
+    var b = document.querySelector("b");
+    var span = document.querySelector("span");
+    //定义剩余可输入的字数;
+    var sum = 30;
+    //定义内容变化事件函数
+    textarea.oninput = function(){
+        sum = 30;
+        sum -= this.value.length;
+        if(sum >= 0) b.innerText = sum;
+        else span.innerHTML = "您已超出<b>" + -sum + "</b>字";
+    }
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mydiv"></div>
+</body>
+<script>
+    //获取div对象
+    var div = document.getElementById("mydiv");
+    //定义一个开关控制移动
+    var flag = false;
+    //定义鼠标按下时的事件函数
+    div.onmousedown = function(event){
+        //打开开关
+        flag = true;
+        //获取鼠标按下时鼠标相对div的坐标，后面要保证该坐标不变
+        var x = event.offsetX;
+        var y = event.offsetY;
+        //定义鼠标移动时的事件函数
+        document.onmousemove = function(event){
+            //限制div移动的范围
+            var h = window.innerHeight - div.offsetHeight;
+            var w = window.innerWidth - div.offsetWidth;
+            //获取鼠标相对于浏览器的位置
+            var div_left = event.clientX - x;
+            var div_top = event.clientY - y;
+            
+            //限制div只能再页面范围内移动
+            div_left = Math.min((Math.max(0,div_left)) , w);
+            div_top = Math.min((Math.max(0,div_top)) , h);
+            
+            //将新的坐标传回style
+            if(flag){
+                div.style.left = div_left + "px";
+                div.style.top = div_top + "px";
+            }
+        }
+    }
+    div.onmouseup = function(){
+        flag = false;
+    }
+</script>
+</html>

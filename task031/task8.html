@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            padding: 200px;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="mydiv"></div>
+</body>
+<script>
+    //获取div节点
+    var div = document.getElementById("mydiv");
+    div.onmouseenter = function(){
+        this.style.backgroundColor = "green";
+        this.style.borderRadius = "50%";
+    }
+    div.onmouseleave = function(){
+        this.style.backgroundColor = "orange";
+        this.style.borderRadius = "0%";
+    }
+</script>
+</html>
