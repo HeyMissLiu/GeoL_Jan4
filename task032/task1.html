@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="">
+    <button id="btn">添加</button>
+    <br>
+    <ul>
+        <li>吃饭</li>
+        <li>睡觉</li>
+        <li>打豆豆</li>
+    </ul>
+</body>
+<script>
+    //找按钮对象,ul对象
+    var ul = document.querySelector("ul");
+    var button = document.getElementById("btn");
+    //定义按钮点击事件函数
+    button.onclick = function(){
+        //增加元素节点
+        var li = document.createElement("li")
+        //找输入框对象
+        var input = document.querySelector("input")
+        //定义li的内容
+        li.innerHTML = input.value;
+        //挂载
+        ul.appendChild(li);
+        //点击之后将输入框内容清空
+        input.value = "";
+    }
+    //定义ul点击事件
+    ul.onclick = function(e){
+        //删除对应元素节点
+        ul.removeChild(e.target);
+    }
+</script>
+</html>
