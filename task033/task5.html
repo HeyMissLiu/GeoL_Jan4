@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 650px;
+            height: 360px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 6500px;
+            position: relative;
+            left: 0px;
+            transition: left 0.5s ease 0s;
+        }
+        li{
+            float: left;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s linear 0s;
+        }
+        li:nth-of-type(1){
+            /*只有第一张透明度为1*/
+            opacity: 1;
+        }
+        .leftbtn{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -25px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .rightbtn{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            margin-top: -25px;
+            background-color:  white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <ul id="list">
+            <li><img src="./beijing/0.jpg" alt=""></li>
+            <li><img src="./beijing/1.jpg" alt=""></li>
+            <li><img src="./beijing/2.jpg" alt=""></li>
+            <li><img src="./beijing/3.jpg" alt=""></li>
+            <li><img src="./beijing/4.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:;" class="leftbtn" id="leftbtn"></a>
+        <a href="javascript:;" class="rightbtn" id="rightbtn"></a>
+    </div>
+</body>
+<script>
+    //找对象
+    var left = document.getElementById("leftbtn");
+    var right = document.getElementById("rightbtn");
+    var li = document.querySelectorAll("ul li");
+    //定义图片位置
+    var currentLiNumber = 0;
+    //定义锁
+    var lock = false
+    //给按钮绑定点击事件
+    left.onclick = function(){
+        if(lock){
+            return;
+        }
+        //上锁
+        lock = true;
+        //将当前图片透明度置0
+        li[currentLiNumber].style.opacity = "0";
+        //切换到下一张图片，并使其透明度为1
+        currentLiNumber--;
+        if(currentLiNumber === -1)
+            currentLiNumber = 4;
+        li[currentLiNumber].style.opacity = "1";
+        //如果下一张图片是第一张，将位置重置
+        setTimeout(function(){
+            //1s后打开锁
+            lock = false;
+        },1000)
+    }
+
+    right.onclick = function(){
+        if(lock){
+            return;
+        }
+        lock = true;
+        li[currentLiNumber].style.opacity = "0";
+        currentLiNumber++;
+        if(currentLiNumber === 5)
+            currentLiNumber = 0;
+        li[currentLiNumber].style.opacity = "1";
+        setTimeout(function(){
+            lock = false;
+        },1000)
+    }
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      #minute,
+      #second {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="minute" value="" /> 分钟
+    <input type="text" id="second" value="" /> 秒
+    <button>启动</button>
+    <button>暂停</button>
+  </body>
+  <script>
+    //找对象
+    var minute = document.getElementById("minute");
+    var second = document.getElementById("second");
+    var start = document.querySelector("button:nth-of-type(1)");
+    var stop = document.querySelector("button:nth-of-type(2)");
+
+    //定义锁
+    var lock = false;
+    start.onclick = function () {
+      //点击开始前，minute和second的value为空，写在外卖为Nan
+      var timeNumber = parseInt(minute.value) * 60 + parseInt(second.value);
+      var minuteNumber = parseInt(minute.value);
+      var secondNumber = parseInt(second.value);
+      if (lock) {
+        return;
+      }
+      //上锁
+      lock = true;
+      //设置定时器,倒计时结束弹窗
+      timer = setInterval(function () {
+        if (timeNumber === 0) {
+          alert("倒计时结束");
+          clearInterval(timer);
+          return;
+        }
+        //计算两个input的value值
+        timeNumber--;
+        minuteNumber = Math.floor(timeNumber / 60);
+        secondNumber = timeNumber % 60;
+        //如果小于10，前加0
+        if (minuteNumber < 10) {
+          minute.value = "0" + minuteNumber;
+        } else minute.value = minuteNumber;
+        if (secondNumber < 10) {
+          second.value = "0" + secondNumber;
+        } else second.value = secondNumber;
+      }, 1000);
+      //避免加速问题
+      setTimeout(function () {
+        lock = false;
+      }, timeNumber * 1000);
+    }
+    //点击暂停时，清除定时器并将锁解开
+    stop.onclick = function () {
+      clearInterval(timer);
+      lock = false;
+    };
+  </script>
+</html>

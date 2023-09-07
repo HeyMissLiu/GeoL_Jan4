@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 1000px;
+            height: 130px;
+            border: 1px solid #e81414;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .box ul{
+            list-style: none;
+            width: 5000px;
+            position: relative;
+        }
+        .box ul li{
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <ul id="list">
+            <li><img src="./number/0.png" alt=""></li>
+            <li><img src="./number/1.png" alt=""></li>
+            <li><img src="./number/2.png" alt=""></li>
+            <li><img src="./number/3.png" alt=""></li>
+            <li><img src="./number/4.png" alt=""></li>
+            <li><img src="./number/5.png" alt=""></li>
+        </ul>
+    </div>
+</body>
+<script>
+    //找list对象，在复制一组图片
+    var list = document.getElementById("list");
+    list.innerHTML += list.innerHTML;
+    //定义一个初始位置
+    var left = 0;
+    //设置一个空定时器
+    var timer = null;
+    //使用函数封装定时器
+    move = function(){
+        //清除定时器
+        clearInterval(timer);
+        //设置定时器
+        timer = setInterval(function(){
+            //如果走到最后，直接拉回到开始
+            if(left === -1260) left = 0;
+            //每10ms走五像素
+            left -= 5;
+            list.style.left = left + "px";
+        },10)
+    }
+    //打开网页直接移动
+    move();
+    //鼠标移入停止移动
+    var box = document.getElementById("box");
+    box.onmousemove = function(){
+        //清除定时器
+        clearInterval(timer);
+    }
+    //鼠标移出继续移动
+    box.onmouseout = function(){
+        //直接调用函数
+        move();
+    }
+</script>
+</html>

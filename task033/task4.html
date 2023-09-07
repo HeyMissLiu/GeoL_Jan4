@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 650px;
+            height: 360px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 6500px;
+            position: relative;
+            left: 0px;
+            transition: left 0.5s ease 0s;
+        }
+        li{
+            float: left;
+        }
+        .leftbtn{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -25px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .rightbtn{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            margin-top: -25px;
+            background-color:  white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <ul id="list">
+            <li><img src="./beijing/0.jpg" alt=""></li>
+            <li><img src="./beijing/1.jpg" alt=""></li>
+            <li><img src="./beijing/2.jpg" alt=""></li>
+            <li><img src="./beijing/3.jpg" alt=""></li>
+            <li><img src="./beijing/4.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:;" class="leftbtn" id="leftbtn"></a>
+        <a href="javascript:;" class="rightbtn" id="rightbtn"></a>
+    </div>
+</body>
+<script>
+    //复制图片
+    var list = document.getElementById("list");
+    list.innerHTML += list.innerHTML;
+    //定义初始位置
+    var currentposition = 0;
+    //找到按钮，绑定点击事件
+    var leftbtn = document.getElementById("leftbtn");   
+    var rightbtn = document.getElementById("rightbtn");
+    //定义锁,阻止定时器加速
+    var lock = false;
+    leftbtn.onclick = function(){
+        if(lock){
+            return;
+        }
+        //上锁
+        lock = true;
+        //如果是第一张，关闭动画，立即回到第一张
+        if(currentposition === 0){
+            list.style.transition = "none";
+            currentposition = -5850;
+            list.style.left = currentposition + "px";
+        }
+            //设置定时器打开动画,防止关闭动画失效
+        else{
+            setTimeout(function(){
+                list.style.transition = "left 0.5s ease 0s"
+                currentposition += 650;
+                list.style.left = currentposition + "px";
+            },0)
+        }
+        setTimeout(function(){
+            //动画完成后打开锁
+            lock = false;
+        },500)
+    }
+    rightbtn.onclick = function(){
+        if(lock){
+            return;
+        }
+        lock = true;
+        //如果是最后一张，关闭动画，立即回到第一张
+        if(currentposition === -5850){
+            list.style.transition = "none";
+            currentposition = 0;
+            list.style.left = currentposition + "px";
+        }
+        else{
+            //设置延时器打开动画
+            setTimeout(function(){
+                list.style.transition = "left 0.5s ease 0s"
+                currentposition -= 650;
+                list.style.left = currentposition + "px";
+            },0)
+        } 
+        setTimeout(function(){
+            lock = false;
+        },500)
+    }
+</script>
+</html>
