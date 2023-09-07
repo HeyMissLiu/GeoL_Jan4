@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 670px;
+            height: 915px;
+            position: relative;
+            margin: 0 auto;
+            border: 1px solid orange;
+            border-radius: 2%;
+        }
+        .picture{
+            width: 640px;
+            height: 835px;
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            border-radius: 2%;
+            overflow: hidden;
+        }
+        img{
+            width: 640px;
+            height: 835px;
+        }
+        .last{
+            width: 150px;
+            height: 30px;
+            position: absolute;
+            bottom: 25px;
+            left: 80px;
+        }
+        #info{
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            bottom: 25px;
+            left: 325px;
+        }
+        .next{
+            width: 150px;
+            height: 30px;
+            position: absolute;
+            bottom: 25px;
+            right: 80px;
+        }
+        button{
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="picture">
+            <img src="./女明星/01.jpeg" alt="">
+            <img src="./女明星/02.jpeg" alt="">
+            <img src="./女明星/03.jpeg" alt="">
+            <img src="./女明星/04.jpeg" alt="">
+            <img src="./女明星/05.jpeg" alt="">
+            <img src="./女明星/06.jpeg" alt="">
+            <img src="./女明星/07.jpeg" alt="">
+            <img src="./女明星/08.jpeg" alt="">
+            <img src="./女明星/09.jpeg" alt="">
+            <img src="./女明星/10.jpeg" alt="">
+        </div>
+        <div class="info">
+            <button class="last" id="last">上一张</button>
+            <span id="info">1/10</span>
+            <button class="next" id="next">下一张</button>
+        </div>
+    </div>
+</body>
+<script>
+    //找对象
+    var last = document.getElementById("last");
+    var next = document.getElementById("next");
+    var img = document.querySelector("img");
+    var info = document.getElementById("info");
+
+    //将图片路径存到一个数组内
+    var aimg = ["./女明星/01.jpeg",
+                "./女明星/02.jpeg",
+                "./女明星/03.jpeg",
+                "./女明星/04.jpeg",
+                "./女明星/05.jpeg",
+                "./女明星/06.jpeg",
+                "./女明星/07.jpeg",
+                "./女明星/08.jpeg",
+                "./女明星/09.jpeg",
+                "./女明星/10.jpeg"]
+    //定义图片位置
+    var currentposition = 0;
+    //定义锁，没有动画，上不上锁区别不大
+    var lock = false
+    //定义点击事件
+    last.onclick = function(){
+        if(lock){
+            return;
+        }
+        //上锁
+        lock = true
+        //到最后一张回到第一张n
+        if(currentposition === 0){
+            currentposition = 10;
+        }
+        currentposition--;
+        img.src = aimg[currentposition];
+        //改变info的值
+        info.innerText = currentposition+1 + "/" + aimg.length;
+        setTimeout(function(){
+            //0.5秒后开锁
+            lock = false;
+        },500)
+    }
+    next.onclick = function(){
+        if(lock) return
+        lock = true
+        if(currentposition === 9){
+            currentposition = -1;
+        }
+        currentposition++;
+        img.src = aimg[currentposition];
+        info.innerText = currentposition+1 + "/" + aimg.length;
+        setTimeout(function(){
+            lock = false
+        },500)
+    }
+</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1002px;
+            height: 600px;
+            position: relative;
+            margin: 50px auto;
+            border: 1px solid gray ;
+        }
+        li{
+            list-style: none;
+            display: none;
+        }
+        .options{
+            width: 100px;
+            height: 600px;
+            float: left;
+            text-align: left;
+            background-color: #f7f7f8;
+        }
+        .options li{
+            display: block;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .options .active{
+            background-color: white;
+        }
+        .content{
+            width: 900px;
+            float: right;
+        }
+        span{
+            margin: 20px 40px;
+        }
+        img{
+            margin: 20px 40px;
+        }
+        .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="options">
+            <ul>
+                <li class="active" data-num = 0>选项一</li>
+                <li data-num = 1>选项二</li>
+                <li data-num = 2>选项三</li>
+            </ul>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="active">
+                    <span>游泳池1</span>
+                    <img src="./选项卡/industrial-mech.jpg" alt="">
+                </li>
+                <li>
+                    <span>斗兽场2</span>
+                    <img src="./选项卡/colosseum.jpg" alt="">
+                </li>
+                <li>
+                    <span>雪山3</span>
+                    <img src="./选项卡/sahale-wa.jpg" alt="">
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <script>
+        //找对象
+        var options = document.querySelectorAll(".options ul li")
+        var content = document.querySelectorAll(".content ul li")
+
+        //为选项添加点击事件
+        for(var i = 0; i < options.length; i++){
+            options[i].onclick = function(){
+                //先将所有的active清空
+                for(var j = 0; j < options.length; j++){
+                    options[j].classList.remove("active");
+                    content[j].classList.remove("active");
+                }
+                //为当前点击的选项和内容添加active类
+                this.classList.add("active")
+                content[this.dataset.num].classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>

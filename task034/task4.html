@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 560px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .show{
+            width: 546px;
+            padding: 7px;
+            border: 3px solid orange;
+            border-radius: 5%;
+            margin: 20px 0;
+            position: absolute;
+        }
+        .show img{
+            width: 546px;
+            height: 546px;
+            border-radius: 5%;
+        }
+        .products{
+            width: 340px;
+            height: 40px;
+            position: absolute;
+            left: 120px;
+            top: 600px;
+        }
+        ul li{
+            list-style: none;
+            display: inline;
+            padding: 0 10px;
+        }
+        li.active img{
+            border: 3px solid orange;
+            cursor: pointer;
+        }
+        ul li img{
+            width: 40px;
+            height: 40px;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="show" id="show">
+            <img src="./外星人笔记本/1.jpg" alt="">
+        </div>
+        <div class="products">
+            <ul>
+                <li class="active">
+                    <img src="./外星人笔记本/1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./外星人笔记本/2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./外星人笔记本/3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./外星人笔记本/4.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./外星人笔记本/5.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        //将图片信息保存到一个数组内
+        var products = ["./外星人笔记本/1.jpg",
+                        "./外星人笔记本/2.jpg",
+                        "./外星人笔记本/3.jpg",
+                        "./外星人笔记本/4.jpg",
+                        "./外星人笔记本/5.jpg",]
+        //找对象
+        var show = document.querySelector(".show img");
+        var ali = document.querySelectorAll("li");
+
+        //给li添加鼠标移入事件
+        for(var i = 0; i < ali.length; i++){
+            
+            ali[i].onmouseover = function(){
+                for(var j = 0; j < ali.length; j++){
+                    ali[j].classList.remove("active")
+                }
+                show.src = this.querySelector("img").src;
+                this.classList.add("active")
+            }
+        }
+    </script>
+</body>
+</html>

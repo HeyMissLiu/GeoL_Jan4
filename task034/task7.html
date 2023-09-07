@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            border: 1px solid #000;
+            clear: both;
+        }
+        td{
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid #000;
+            padding: 5px;
+        }
+        
+        body{
+            font-weight: bold
+        }
+        input{
+            width: 40px;
+        }
+        button{
+            cursor: pointer;
+            color: white;
+            background-color: #353535;
+            border-radius: 5px;
+        }
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    行数：<input type="text" value="" id="row">
+    列数：<input type="text" value="" id="col">
+    <button id="btn">生成表格</button>
+    &nbsp;&nbsp;
+    <span>提示：行和列只能是整数，且最大为50</span>
+    <div id="tableContainer">
+
+    </div>
+</body>
+<script>
+    //找对象
+    var row = document.getElementById("row")
+    var rowNum = parseInt(row.value);
+    var col = document.getElementById("col")
+    var colNum = parseInt(col.value);
+    var btn = document.getElementById("btn")
+
+    //定义点击事件
+    btn.onclick = function(){
+        //判断是否符合规范
+        if(row.value == ""  || colNum.value == "" ){
+            alert("输入值不能为空");
+            return;
+            
+        }
+        if(isNaN(row.value) || isNaN(col.value)){
+            alert("只能输入数字");
+            row.value = col.value = ""
+            return;
+        }
+        if(!(row.value > 0 && row.value <= 50 && col.value > 0 && col.value <= 50)){
+            alert("只能输入50内的数字");
+            row.value = col.value = ""
+            return;
+        }
+        //主要设置表格的css样式
+        
+        var str = "<table>";
+        for(var i = 0; i < row.value; i++){
+            str += "<tr>";
+            for(var j = 0; j < col.value; j++){
+                str += "<td style = 'background-color:rgb(" 
+                    + Math.floor(Math.random() * 256) + ","
+                    + Math.floor(Math.random() * 256) + ","
+                    + Math.floor(Math.random() * 256) + ")'>"
+                    + Math.floor(Math.random()*100) + "</td>";
+            }
+            str += "</tr>";
+        }
+        str += "</table>";
+        document.getElementById("tableContainer").innerHTML = str;
+    }
+</script>
+</html>

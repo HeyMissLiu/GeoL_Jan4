@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image: url(./百度换肤/skin1.jpg);
+        }
+        .options{
+            width: 990px;
+            height: 120px;
+            margin: 0 auto;
+            background-color: transparent;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            z-index: 200;
+        }
+        li{
+            display: inline-flex;
+            margin: 10px 40px;
+            cursor: pointer;
+        }
+        li img{
+            width: 160px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="options">
+        <ul>
+            <li>
+                <img src="./百度换肤/skin1.jpg" alt="">
+            </li>
+            <li>
+                <img src="./百度换肤/skin2.jpg" alt="">
+            </li>
+            <li>
+                <img src="./百度换肤/skin3.jpg" alt="">
+            </li>
+            <li>
+                <img src="./百度换肤/skin4.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+    <script>
+        //找对象
+        var lis = document.querySelectorAll(".options ul li")
+
+        //给所有li定义点击事件
+        for(var i = 0; i < lis.length; i++){
+            //绑定事件
+            lis[i].onclick = function(){
+                //改变body的背景图
+                document.body.style.backgroundImage = "url(" + this.querySelector("img").src + ")";
+            }
+        }
+    </script>
+</body>
+</html>
