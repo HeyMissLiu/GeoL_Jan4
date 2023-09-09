@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj1 = {
+        a: 1,
+        b: 2,
+        c: [
+          33,
+          44,
+          {
+            m: 55,
+            n: 66,
+            p: [77, 88],
+          },
+        ],
+      };
+      function deepClone(obj) {
+        var obj2 = {};
+        for (var key in obj) {
+          if (typeof obj[key] === "oject") {
+            obj2[key] = deepClone(obj[key]);
+          } else {
+            obj2[key] = obj[key];
+          }
+        }
+        return obj2;
+      }
+      var obj2 = deepClone(obj1);
+      obj1.d = 99;
+      console.log(obj1);
+      console.log(obj2);
+    </script>
+  </body>
+</html>
