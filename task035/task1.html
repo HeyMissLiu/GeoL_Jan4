@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    username: <input type="text" value="">
+    <br>
+    password: <input type="text" value="">
+    <br>
+    <button>登录</button>
+    <script>
+        //找对象
+        var username = document.querySelector("input")
+        var password = document.querySelector("input:nth-of-type(2)")
+        var btn = document.querySelector("button")
+
+        //定义按钮点击事件
+        btn.onclick = function(){
+            //判断输入的内容是否正确
+            if(username.value === "张三" && password.value === "123456")
+            {
+                window.location.href = "http://www.baidu.com"
+                return;
+            }
+            alert("信息不对！")
+            username.value = password.value = ""
+            return;
+        }
+    </script>
+</body>
+</html>

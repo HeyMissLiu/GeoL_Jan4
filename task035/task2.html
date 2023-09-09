@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 5000px;
+            background-image: linear-gradient(to bottom ,red,blue,yellow);
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 100px;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 44px;
+            background-color: #fefefe;
+            z-index: 100;
+        }
+        div:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="toTop">
+        ⬆
+    </div>
+</body>
+<script>
+    //页面加载后直接到页面底部
+    /*到顶部之后刷新页面，并不会回到底部，因为浏览器会记住上次的位置，不会执行onload方法
+      解决方法是使用浏览器的滚动恢复：<html lang="en" scroll-restoration="manual">
+      或者设置延时器，保证方法可以执行*/
+    window.onload = function(){
+        setTimeout(function(){
+            document.documentElement.scrollTop = 4777;
+        },0)
+    }
+    //找对象
+    var toTop = document.querySelector("div")
+
+    //定义鼠标按下事件
+    toTop.onmousedown = function(){
+        //设置定时器，每一秒改变一下scrollTop的值
+        timer = setInterval(function(){
+            document.documentElement.scrollTop -= 200;
+            if(window.scrollY === 0){
+                alert("已经到顶了")
+                clearInterval(timer);
+                return;
+            }
+        },50)
+    }
+</script>
+</html>

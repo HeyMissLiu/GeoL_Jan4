@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            scroll-behavior: smooth;
+        }
+        @font-face {
+            font-family: "webfont";
+            font-display: swap;
+            src: url("楼层导航/font/ran.ttf") format("ttf");
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div img{
+            width: 100%;
+            float: left;
+            height: 100%;
+        }
+        div.title{
+            top: 3px;
+            position: fixed;
+            right: 0;
+            width: 200px;
+            height: 900px;
+            background-color: #fff;
+            border-radius: 15px;
+        }
+        ul{
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 10px 10px 50px #888888;
+        }
+        ul li{
+            width: 200px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-bottom: 1px dashed gray;
+            font-size: 24px;
+            font-family: "webfont" !important;
+        }
+        li:nth-last-child(1){
+            border-bottom: 0;
+        }
+        li:hover{
+            cursor: pointer;
+        }
+        .active{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./楼层导航/img/001.png" alt="">
+        <img src="./楼层导航/img/002.png" alt="">
+        <img src="./楼层导航/img/003.png" alt="">
+        <img src="./楼层导航/img/004.png" alt="">
+        <img src="./楼层导航/img/005.png" alt="">
+        <img src="./楼层导航/img/006.png" alt="">
+        <img src="./楼层导航/img/007.png" alt="">
+        <img src="./楼层导航/img/008.png" alt=""">
+        <img src="./楼层导航/img/009.png" alt="">
+        <img src="./楼层导航/img/010.png" alt="">
+    </div>
+    <div class="title">
+        <ul>
+            <li  class="active" data-index = "0">明星同款</li>
+            <li data-index = "1">功能亮点</li>
+            <li data-index = "2">一刻满血</li>
+            <li data-index = "3">神仙高配</li>
+            <li data-index = "4">金刚电量</li>
+            <li data-index = "5">高刷新</li>
+            <li data-index = "6">高触控</li>
+            <li data-index = "7">超窄边</li>
+            <li data-index = "8">JBL音质</li>
+            <li data-index = "9">Redmi</li>
+        </ul>
+    </div>
+    <script>
+        //等待页面加载完毕
+        window.onload = function(){
+            //设置页面刷新后的位置,设置延时器
+            setTimeout(function(){
+                document.documentElement.scrollTop= 0;
+            },0)
+            //找对象
+            var imgArr = document.querySelectorAll(".container img")
+            var liArr = document.querySelectorAll(".title ul li")
+
+            //添加鼠标滚动监听事件
+            window.addEventListener("scroll",function(){
+                //遍历每张图片
+                for(var i = 0; i < imgArr.length; i++){
+                    //判断是否到达当前楼层
+                    if(window.scrollY >= imgArr[i].offsetTop){
+                        //移除所有的active类
+                        for(var j = 0; j < liArr.length; j++){
+                            liArr[j].classList.remove("active");
+                        }
+                        liArr[i].classList.add("active");
+                    }
+                }
+            })
+            //添加标题点击事件
+            for(var i = 0; i < liArr.length; i++){
+                liArr[i].onclick = function(){
+                    //点击改变当前的scrollTop值,同时标题高亮也可以顺带解决
+                    document.documentElement.scrollTop = parseInt(imgArr[this.dataset.index].offsetTop) + 5;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
