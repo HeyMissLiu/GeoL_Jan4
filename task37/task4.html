@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun(){
+            console.log(this.a + this.b);
+        }
+        var obj = {
+            a:111,
+            b:222,
+            c:[
+                "hello",
+                {
+                    a:333,
+                    b:444,
+                    c:fun,
+                },
+            ],
+        };
+        var a = 555;
+        obj.c[1].c();
+        /*
+            运行结果为777
+            c()运行结果为console.log(this.a + this.b),根据规则1，此时this指向c[1],this.a = 333,this.b = 444
+        */
+        </script>
+</body>
+</html>

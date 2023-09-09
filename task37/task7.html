@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [
+            "A",
+            "B",
+            "C",
+            "D",
+            function(){
+                console.log(this[1]);
+            },
+        ];
+        arr[4]();
+        /*
+            运行结果为B
+            根据规则3可知，arr[4]该函数中的this指向数组arr，arr[1]为B
+        */
+    </script>
+</body>
+</html>

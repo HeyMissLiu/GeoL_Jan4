@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj1 = {
+            a:11,
+            b:22,
+            fn:function(){
+                console.log(this.a + this.b);
+            },
+        };
+        var obj2 = {
+            a:33,
+            b:44,
+            fn:obj1.fn,
+        };
+        obj2.fn();
+        /*执行结果为77
+        obj2.fn()即为obj2.function(){
+            console.log(this.a + this.b)
+        },
+        根据规则1，this指向的是obj2,this.a = 33, this.b = 44
+        */
+    </script>
+</body>
+</html>

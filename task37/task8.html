@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun(){
+            arguments[4]();
+        }
+        fun("A","B","C","D",function(){
+            console.log(this[3]);
+        })
+        /*
+            运行结果为D
+            "A","B","C","D",function(){console.log(this[3]);为函数fun的数组类型的参数，
+            由规则2可知this指向的是该数组，this[3]为D
+        }
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            a:11,
+            b:22,
+            fun:function(){
+                console.log(this.a + this.b);
+            },
+        };
+        var a = 33;
+        var b = 44;
+        setTimeout(function(){
+            obj.fun();
+        },2);
+    /*
+        运行结果为33
+        obj.fun()执行时，this指向的是obj,延时器内的函数为console.log(33),此时没有this，全局变量没用。
+    */    
+    </script>
+</body>
+</html>

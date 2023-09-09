@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun(){
+            return this.a + this.b;
+        }
+        var a = 11;
+        var b = 22;
+        var obj = {
+            a:33,
+            b:fun(),
+            fun:fun,
+        };
+        var result = obj.fun();
+        console.log(result);
+        /*
+            运行结果为66
+            obj.fun()运行结果为this.a + this.b，此时this指向的是obj,this.a = 33,this.b = fun(),此时fun()的this为window，this.b = 33，运行结果为66
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 11;
+        var obj = {
+            a:22,
+            fun:(function(){
+                var a = this.a;
+                return function(){
+                    console.log(a + this.a)
+                    console.log(a)
+                };
+            })(),
+        }
+        obj.fun();
+        /*
+            运行结果为33
+            根据规则4，函数中的this指向window，所以a = this.a = 11; 返回之后的this指向obj，this.a = 22
+        */
+    </script>
+</body>
+</html>
