@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span></span>
+    <button>看不清</button>
+    <script>
+        //获取对象
+        var span = document.querySelector("span")
+        var btn = document.querySelector("button")
+
+        //定义数组存储字符串的组成
+        var str = ["0","1","2","3","4","5","6","7","8","9",
+                   "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+                   "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        //定义函数生成随机的字符串
+        var getRandom = function(num){
+            var result = "";
+            for(var i = 0; i < num; i++){
+                var id = Math.ceil(Math.random()*61) + 0;
+                result += str[id];
+            }
+            return result;
+        }
+
+        //定义点击事件，设置锁防止加速
+        var lock = false;
+        btn.onclick = function(){
+            if(lock){
+                alert("点击太快了，请稍后再试");
+                return;
+            }
+            //上锁
+            lock = true;
+            //生成随机字符串
+            span.innerText = getRandom(4);
+            //设置延时器打开锁，点击1s内不可再点击
+            setTimeout(function(){
+                lock = false;
+            },1000)  
+        }
+    </script>
+</body>
+</html>

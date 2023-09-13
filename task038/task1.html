@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建人类函数
+        function people(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        //构造学生类
+        function student(name,age,sex,hobby){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.hobby = hobby;
+        }
+        //构造老师类
+        function teacher(name,sex,age,rank,salary){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.rank = rank;
+            this.salary = salary;
+        }
+
+        //建立继承关系
+        student.prototype = new people();
+        teacher.prototype = new people();
+        
+        //重写方法
+        teacher.prototype.introduce = function(){
+            console.log("我是" + this.name + "老师，性别" + this.sex + "，" + this.age + "岁，现任" + this.rank + "一职，工资到手" + this.salary + "，我很幸福");
+        }
+        //构造小学生类
+        function pupil(name,age,sex,hobby,birthday){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.hobby = hobby;
+            this.birthday = birthday;
+        }
+        
+
+        //构造大学生类
+        function undergraduate(name,sex,age,school,major,hobby,loverName,loverSex){
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.hobby = hobby;
+            this.major = major;
+            this.school = school;
+            this.loverName = loverName;
+            this.loverSex = loverSex
+        }
+
+        //建立继承关系
+        pupil.prototype = new student();
+        undergraduate.prototype = new student();
+
+        //重写方法
+        pupil.prototype.introduce = function(){
+            console.log("您好，我是" + this.name + ",是一个" + this.sex + "生，今年" + this.age + "岁了，喜欢" + this.hobby + "，" + this.birthday + "是我的生日")
+        }
+        undergraduate.prototype.introduce = function(){
+            console.log("你好，我的名字是" + this.name + ",今年" + this.age + "岁，性别" + this.sex + "，就读于" + this.school + "," + this.major + ",爱好" + this.hobby + ",我的" + this.loverSex + "朋友叫" + this.loverName)
+        }
+        
+
+
+        //创建实例
+        var xiaoming = new pupil("小明","5","男","看《奥特曼》","2016年4月1日")
+        var xiaohong = new pupil("小红","4","女","看《喜洋洋与灰太狼》","2017年6月2日")
+        var lilei = new undergraduate("李雷","男","18","哈尔滨理工大学","计算机专业","看电影","韩梅梅","女")
+        var hanmeimei = new undergraduate("韩梅梅","女","19","黑龙江大学","俄语专业","钓鱼","李雷","男")
+        var zhangsan = new teacher("张三强","男","53","系主任","1800")
+
+        xiaoming.introduce();
+        xiaohong.introduce();
+        lilei.introduce();
+        hanmeimei.introduce();
+        zhangsan.introduce();
+    </script>
+</body>
+</html>

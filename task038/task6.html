@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1000px;
+            height: 400px;
+            background-color: #fff9f3;
+            margin: 20px auto;
+            border-radius: 5%;
+            font-size: 16px;
+            font-weight: lighter;
+            font-family: 'Times New Roman', Times, serif;
+            position: relative;
+        }
+        ul{
+            list-style: none;    
+            padding: 30px 50px;
+        }
+        ul li{
+            padding: 20px 0;
+            color: #434341;
+        }
+        button{
+            position: absolute;
+            bottom: 50px;
+            left: 450px;
+            width: 100px;
+            height: 30px;
+            background-color: #ff9933;
+            color: white;
+            border: 0;
+            cursor: pointer;
+        }
+        .true{
+            color: green;
+            border: 1px solid green;
+        }
+        .error{
+            color: red;
+            border: 1px solid red;
+        }
+        span{
+            color: #b8b9bb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>
+                &nbsp;&nbsp;&nbsp;&nbsp;用户名：<input type="text" value="" id="username" class="">
+                <span style="border: 0;">请输入真实姓名</span>
+            </li>
+            <li>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：<input type="text" value="" id="password">
+                <span style="border: 0;">6到20个字符，至少包含一位数字，一个大写字母，一个小写字母和一个特殊符号（@#$%）</span>
+            </li>
+            <li>
+                确认密码：<input type="text" value="" id="confirmPassword">
+                <span style="border: 0;">请在输入一遍密码，必须和原密码保持一致</span>
+            </li>
+            <li>
+                手机号码：<input type="text" value="" id="phoneNumber">
+                <span style="border: 0;">请输入11位手机号码</span>
+            </li>
+        </ul>
+        <button>注册</button>
+    </div>
+    <script>
+        //等待页面加载完毕
+        document.addEventListener("DOMContentLoaded",function(){
+            //获取操作对象
+            var username = document.getElementById("username")
+            var password = document.getElementById("password")
+            var confirmPassword = document.getElementById("confirmPassword")
+            var phoneNumber = document.getElementById("phoneNumber")
+            var button = document.querySelector("button")
+            var span = document.querySelectorAll("span")
+
+            //定义检查用户名格式函数
+            var checkUsername = function(){
+                //找到span对象
+                var span1 = span[0]
+                console.log(span1)
+
+                //清除所有true和error类
+                username.classList.remove("error")
+                username.classList.remove("true")
+                span1.classList.remove("true")
+                span1.classList.remove("error")
+
+                //定义正则表达式,中文的真实姓名可能会有佚名
+                var reg = /^[\u4E00-\u9FA5]{2,10}(·[\u4E00-\u9FA5]{2,10}){0,2}$/;
+
+                //如果符合正则表达式，添加class值为true
+                if(reg.test(username.value)){
+                    username.classList.add("true");
+                    span1.innerText = "姓名格式正确";
+                    span1.classList.add("true");
+                    return true;
+                }
+                else if(username.value === ""){
+                    username.classList.add("error");
+                    span1.innerText = "此项必填";
+                    span1.classList.add("error");
+                }
+                else{
+                    username.classList.add("error");
+                    span1.innerText = "姓名格式不正确";
+                    span1.classList.add("error");
+                }
+            }
+            //定义检查密码格式函数
+            var checkPassword = function(){
+                //找到span对象
+                var span2 = span[1];
+                console.log(span2)
+
+                //清除所有true和error类
+                password.classList.remove("error")
+                password.classList.remove("true")
+                span2.classList.remove("true")
+                span2.classList.remove("error")
+
+                //定义正则表达式
+                var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@%#])[A-Za-z\d$@#%]{6,20}/;
+
+                //如果符合正则表达式，添加class值为true
+                if(reg.test(password.value)){
+                    password.classList.add("true");
+                    span2.innerText = "密码格式正确";
+                    span2.classList.add("true");
+                    return true;
+                }
+                else if(password.value === ""){
+                    password.classList.add("error");
+                    span2.innerText = "此项必填";
+                    span2.classList.add("error");
+                }
+                else{
+                    password.classList.add("error");
+                    span2.innerText = "密码格式不正确";
+                    span2.classList.add("error");
+                }
+            }
+
+            //定义检查确认密码函数
+            var checkConfirmPassword = function(){
+                //找到span对象
+                var span3 = span[2]
+
+                //清除所有true和error类
+                confirmPassword.classList.remove("error")
+                confirmPassword.classList.remove("true")
+                span3.classList.remove("true")
+                span3.classList.remove("error")
+                //如果确认的密码与密码输入一致，显示true，否则显示error
+                if(password.value === confirmPassword.value && confirmPassword.value !== ""){
+                    confirmPassword.classList.add("true");
+                    span3.innerText = "密码正确";
+                    span3.classList.add("true");
+                    return true;
+                }
+                else if(password.value !== confirmPassword.value){
+                    confirmPassword.classList.add("error");
+                    span3.innerText = "与密码输入不一致";
+                    span3.classList.add("error");
+                }
+                else if(confirmPassword.value === ""){
+                    confirmPassword.classList.add("error")
+                    span3.innerText = "此项必填"
+                    span3.classList.add("error")
+                }
+            }
+            //定义检查电话号码函数
+            var checkPhoneNumber = function(){
+                var span4 = span[3]
+
+                //清除所有true和error类
+                phoneNumber.classList.remove("error")
+                phoneNumber.classList.remove("true")
+                span4.classList.remove("true")
+                span4.classList.remove("error")
+
+                //定义正则表达式
+                var reg = /^1(3[0-9]|5[0-3,5-9]|7[1-3,5-8]|8[0-9])\d{8}$/;
+
+                //如果符合正则表达式，添加class值为true
+                if(reg.test(phoneNumber.value)){
+                    phoneNumber.classList.add("true");
+                    span4.innerText = "电话号码格式正确";
+                    span4.classList.add("true");
+                    return true;
+                }
+                else if(phoneNumber.value === ""){
+                    phoneNumber.classList.add("error");
+                    span4.innerText = "此项必填";
+                    span4.classList.add("error");
+                }
+                else{
+                    phoneNumber.classList.add("error");
+                    span4.innerText = "电话号码格式不正确";
+                    span4.classList.add("error");
+                }
+            }
+            //定义点击事件
+            button.onclick = function(){
+                checkUsername();
+                checkPassword();
+                checkConfirmPassword();
+                checkPhoneNumber();
+                if(checkUsername() && checkPassword() && checkConfirmPassword() &&checkPhoneNumber()) alert("注册成功")
+                else alert("信息有误，请确认后重试");
+            }
+            //定义失去焦点事件
+            username.addEventListener("blur",function(){
+                checkUsername();
+            })
+            password.addEventListener("blur",function(){
+                checkPassword();
+            })
+            confirmPassword.addEventListener("blur",function(){
+                checkConfirmPassword();
+            })
+            phoneNumber.addEventListener("blur",function(){
+                checkPhoneNumber();
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <div>
+        2024高考倒计时:
+        <br>
+        <br>
+        <span></span>
+    </div>
+    <script>
+        //将目标日期转换为时间戳,精确到毫秒
+        var date = "2024-07-08 08:30:00:000"
+        var targetDate = new Date(date);
+        console.log(targetDate + "!");
+        //找到span对象
+        var span = document.querySelector("span")
+        //设置一个定时器，每一秒更新一次
+        setInterval(function(){
+            //将当前日期转换为时间戳
+            var currentDate = new Date().getTime();
+            console.log(currentDate);
+            var difference = targetDate - currentDate;
+            //计算剩余的时间
+            var days = Math.floor(difference / (24 * 60 * 60 * 1000));
+            var hours = Math.floor((difference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            var minutes = Math.floor(((difference % (24 * 60 * 60 * 1000)) % (60 * 60 * 1000)) / (60 * 1000));
+            var seconds = Math.floor(((difference % (24 * 60 * 60 * 1000)) % (60 * 60 * 1000)) % (60 * 1000) / 1000);
+            //若为个位数，前补0
+            if(hours < 10) hours = "0" + hours;
+            if(minutes < 10) minutes = "0" + minutes;
+            if(seconds < 10) seconds = "0" + seconds;
+            //将结果写入span
+            span.innerText = days + "天" + hours + "时" + minutes + "分" + seconds + "秒！！！"
+        },1000)
+    </script>
+</body>
+</html>

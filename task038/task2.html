@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box img{
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        //找到box节点
+        var box = document.querySelector("div.box")
+        //定义构造函数
+        var trafficLight = function(){
+            this.color = 1;
+            this.dom = null;
+            this.init();
+        }
+        //定义初始化方法
+        trafficLight.prototype.init = function(){
+            //创建孤儿节点
+            this.dom = document.createElement("img")
+            //定义图片的内容
+            this.dom.src = "./红绿灯/img/" + this.color +".jpg";
+            //将节点挂载到box上
+            box.appendChild(this.dom)
+            //定义点击事件
+            this.bindEvent();
+        }
+        //定义点击事件
+        trafficLight.prototype.bindEvent = function(){
+            var that = this
+            this.dom.onclick = function(){
+                that.changeColor();
+            }
+        }
+        //定义变换颜色方法
+        trafficLight.prototype.changeColor = function(){
+            this.color++;
+            if(this.color === 4){
+                this.color = 1;
+            }
+            this.dom.src = "./红绿灯/img/" + this.color +".jpg"
+        }
+        //实例化100个对象
+        for(var i = 0; i < 100; i++){
+            new trafficLight();
+        }
+    </script>
+</body>
+</html>

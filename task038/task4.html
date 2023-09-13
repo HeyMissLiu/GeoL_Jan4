@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calendar{
+            width: 300px;
+            height: 300px;
+            border: 2px solid orange;
+            margin: 20px auto;
+            border-radius: 5%;
+        }
+        .title{
+            text-align: center;
+            margin: 10px;
+        }
+        span{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-weight: 300px;
+        }
+        .body{
+            width: 300px;
+            overflow: hidden;
+            text-align: center;
+        }
+        ul{
+            list-style: none;
+            width: 100%;
+            font-weight: bold;
+            font-size:14px;
+            padding: 0;
+        }
+        ul li{
+            width: 14.28%;
+            height: 36px;
+            line-height: 36px;
+            display: block;
+            float: left;
+            box-sizing: border-box;
+            text-align: center;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <div class="title">
+            <span></span>
+        </div>
+        <div class="body">
+                <ul>
+                    <li>日</li>
+                    <li>一</li>
+                    <li>二</li>
+                    <li>三</li>
+                    <li>四</li>
+                    <li>五</li>
+                    <li>六</li>
+                </ul>
+                <ul id="days">
+
+                </ul>
+        </div>
+    </div>
+    <script>
+        //获取操作对象
+        var span = document.querySelector(".title span")
+        var days = document.getElementById("days");
+        //从输入框获取年月
+        var data = prompt("请输入年月，以空格隔开");
+        var year = parseInt(data.substring(0,data.indexOf(" ")))
+        var month = parseInt(data.substring(data.indexOf(" ")))
+
+        span.innerText = year + "年" + month + "月";
+
+        //创建一个月份数组存储每个月有多少天,分闰年和平年
+        var leepYear = [31,28,31,30,31,30,31,31,30,31,30,31]
+        var commonYear = [31,29,31,30,31,30,31,31,30,31,30,31]
+
+        //创建一个函数用于获取该月份第一天是周几
+        var getDayStart = function(year,month){
+            month--;
+            var tmpDate = new Date(year,month,1)
+            return(tmpDate.getDay())
+        }
+        
+        //创建函数判断是闰年还是平年
+        var isLeepYear = function(year,month){
+            if((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)){
+                return leepYear[month-1];
+            }
+            return commonYear[month-1];
+        }
+
+        //创建函数生成月份显示
+        var refreshDate = function(){
+            //定义一个空数组
+            var str = "";
+            //获取该月份的总天数
+            var totalDays = isLeepYear(year,month);
+            //获取该月第一天星期几
+            var firstDay = getDayStart(year,month);
+            //为起始日之前的日期创建空白节点
+            for(var i = 0; i < firstDay; i++){
+                str += "<li></li>";
+            }
+            //为每一天创建一个li
+            for(var i = 1; i <= totalDays; i++){
+                str += "<li>" + i + "</li>"
+            }
+            days.innerHTML = str;
+        }
+        refreshDate(year,month);
+    </script>
+</body>
+</html>
