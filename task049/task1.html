@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1, minimum-scale=1">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: olivedrab;
+            height: 100vh;
+        }
+        div.header{
+            height: 10%;
+            background-color: red;
+        }
+        div.footer{
+            height: 10%;
+            background-color: yellow;
+        }
+        div.body{
+            display: flex;
+            flex-grow: 1;
+            align-items: stretch;
+        }
+        div.nav{
+            flex-basis: 20%;
+        }
+        div.main{
+            flex-basis: 60%;
+            background-color: #808080;
+        }
+        div.side{
+            flex-basis: 20%;
+            background-color: #add8e6;
+        }
+        .flex-center{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="header flex-center">头部</div>
+    <div class="body">
+        <div class="nav flex-center">导航</div>
+        <div class="main flex-center">主体部分</div>
+        <div class="side flex-center">侧边部分</div>
+    </div>
+    <div class="footer flex-center">底部</div>
+</body>
+</html>
