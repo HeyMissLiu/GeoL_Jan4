@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			#box {
+                width: 80%;
+				margin: 0 auto;
+				background: #ccc;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: flex-start;
+			}
+			#box img {
+				width: 21%;
+				height: 200px;
+                padding: 2%;
+			}
+            @media screen and (max-width:960px){
+                #box img{
+                    width: 29.3333%;
+                    padding: 2%;
+                    height: 200px;
+                }
+            }
+            @media screen and (max-width:780px){
+                #box img{
+                    width: 46%;
+                    padding: 2%;
+                    height: 200px;
+                }
+            }
+            @media screen and (max-width:440px){
+                #box img{
+                    width: 96%;
+                    padding: 2%;
+                    height: 200px;
+                }
+            }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202112111720111.png" alt="" />
+			<img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202112111720598.png" alt="" />
+			<img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202112111720753.png" alt="" />
+			<img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202112111720111.png" alt="" />
+			<img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202112111720598.png" alt="" />
+			<img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202112111720753.png" alt="" />
+		</div>
+	</body>
+</html>
