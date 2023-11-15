@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 2fr 6fr 2fr;
+            grid-template-rows: 1fr 8fr 1fr;
+        }
+        p{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        p:nth-of-type(1){
+            background-color: #ff0000;
+            grid-column: 1/4;
+            grid-row:1/2;
+        }
+        p:nth-of-type(2){
+            background-color: #008000;
+            grid-column: 1/2;
+            grid-row:2/3;
+        }
+        p:nth-of-type(3){
+            background-color: #808080;
+            grid-column: 2/3;
+            grid-row:2/3;
+        }
+        p:nth-of-type(4){
+            background-color: #add8e6;
+            grid-column: 3/4;
+            grid-row:2/3;
+        }
+        p:nth-of-type(5){
+            background-color: #ffff00;
+            grid-column: 1/4;
+            grid-row:3/4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>头部</p>
+        <p>导航</p>
+        <p>主体部分</p>
+        <p>侧边栏</p>
+        <p>底部</p>
+    </div>
+</body>
+</html>
