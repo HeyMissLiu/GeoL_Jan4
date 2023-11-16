@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            height: 200px;
+            width: 200px;
+            background-color: olive;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body style="height: 2000px;">
+    <div class="box" id="box"></div>
+</body>
+<script>
+    //定义拖拽函数，将DOM设为参数
+    const drag = $el => {
+        //定义初始位置对象
+        const startPoint = {};
+        //定义移动距离对象
+        const movePoint = {};
+        //定义当前位置对象
+        const curPos = {
+            x:0,
+            y:0
+        };
+
+        //添加事件函数
+        $el.addEventListener('touchstart',startHandler,false);
+        $el.addEventListener('touchmove',moveHandler,false);
+        $el.addEventListener('touchend',endHandler,false);
+        $el.addEventListener('touchcancel',endHandler,false);
+
+        //定义函数
+        function startHandler(e){
+            //清除浏览器默认事件
+            e.preventDefault();
+
+            //定义触摸点(单指)
+            const touch = e.changedTouches[0];
+
+            //将触摸点的位置存入开始位置对象
+            startPoint.x = touch.pageX;
+            startPoint.y = touch.pageY;
+        }
+
+        function moveHandler(e){
+
+            const touch = e.changedTouches[0];
+
+            movePoint.x = curPos.x + touch.pageX - startPoint.x;
+            movePoint.y = curPos.y + touch.pageY - startPoint.y;
+
+            $el.style.transform = `translate3d(${movePoint.x}px,${movePoint.y}px,0)`;
+        }
+
+        function endHandler(){
+            curPos.x = movePoint.x;
+            curPos.y = movePoint.y;
+        }
+
+        
+    }
+    var box = document.getElementById('box');
+    drag(box);
+</script>
+</html>
