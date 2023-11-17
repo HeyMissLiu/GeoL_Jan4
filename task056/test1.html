@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+<script>
+    //定义函数
+    const drag = $el => {
+        
+        //定义开始位置对象
+        const startPoint = {};
+
+        //定义移动距离对象
+        const movePoint = {};
+
+        //定义当前位置对象
+        const curPos = {
+            x:0,
+            y:0
+        }
+
+        //定义点击事件函数
+        $el.addEventListener('pointerdown',startHandler,false);
+
+        //清除浏览器默认事件
+        $el.addEventListener('touchstart',function(e){
+            e.preventDefault();
+        },false)
+
+        //定义开始函数
+        function startHandler(e){
+            //添加鼠标移动，松开，取消事件函数（因为PC端移出目标元素，pointermove不再生效，所以将这些事件定义在document上）
+            document.addEventListener('pointermove',moveHandler,false);
+            document.addEventListener('pointerup',endHandler,false);
+            document.addEventListener('pointercancel',endHandler,false);
+            
+            startPoint.x = e.pageX;
+            startPoint.y = e.pageY;
+        }
+
+        //定义移动函数
+        function moveHandler(e){
+            e.preventDefault();
+
+            movePoint.x = curPos.x + e.pageX - startPoint.x;
+            movePoint.y = curPos.y + e.pageY - startPoint.y;
+
+            $el.style.transform = `translate3d(${movePoint.x}px,${movePoint.y}px,0)`
+        }
+
+        //定义结束函数
+        function endHandler(e){
+            curPos.x = movePoint.x;
+            curPos.y = movePoint.y
+
+            //释放事件
+            document.removeEventListener('pointermove',moveHandler,false);
+            document.removeEventListener('pointerup',endHandler,false);
+            document.removeEventListener('pointercancel',endHandler,false);
+        }
+    };
+
+    //调用drag函数
+    const box = document.getElementById('box');
+    drag(box);
+</script>
+</html>

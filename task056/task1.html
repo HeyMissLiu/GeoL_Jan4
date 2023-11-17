@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./blackhole.png" alt="" id="gesture">
+</body>
+<script>
+    //定义函数
+    function swipe($el,cb){
+        //定义开始的触摸点
+        const startPoint = {};
+
+        //定义时间和距离阈值
+        const thrshold = {
+            time:500,
+            distance:100
+        }
+        //绑定按下事件函数
+        $el.addEventListener('pointerdown',startHandler,false);
+
+        //清除移动端默认事件
+        $el.addEventListener('touchstart',function(e){
+            e.preventDefault();
+        })
+
+        function startHandler(e){
+            //清除PC端默认事件
+            e.preventDefault();
+
+            //记录开始的时间
+            startPoint.time = new Date().getTime();
+            //记录开始时的位置
+            startPoint.x = e.pageX;
+            startPoint.y = e.pageY;
+
+            //绑定point抬起和取消事件
+            document.addEventListener('pointerup',endHandler,false);
+            document.addEventListener('pointercancel',endHandler,false);
+        }
+        
+        function endHandler(e){
+            const process = {};
+            let direction = '';
+
+            //计算过程耗费的时间
+            process.time = new Date().getTime() - startPoint.time;
+            //计算移动的距离
+            process.x = e.pageX - startPoint.x;
+            process.y = e.pageY - startPoint.y;
+
+            //判断是否是扫动手势
+            if(process.time > thrshold.time || Math.abs(process.x) < thrshold.distance && Math.abs(process.y) < thrshold.distance) return;
+            else{
+                if(Math.abs(process.x) < Math.abs(process.y)){
+                    if(process.y > 0) direction = "down";
+                    else direction = 'up';
+                }
+                else{
+                    if(process.x > 0) direction = 'right';
+                    else direction = 'left';
+                }
+                cb.call($el,direction);
+            }
+            document.removeEventListener('pointup',endHandler,false);
+            document.removeEventListener('pointcancel',endHandler,false);
+        }
+    }
+
+    const img = document.getElementById('gesture');
+    swipe(img,function(direction){
+        console.log(direction)
+    })
+</script>
+</html>
