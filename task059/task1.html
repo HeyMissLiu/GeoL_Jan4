@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .img-container{
+            width: 100%;
+            height: 366px;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container" ><img src="./图片懒加载素材/loading.gif" data-src="./图片懒加载素材/1.jpg" alt=""/></div>
+    <div class="img-container" ><img src="./图片懒加载素材/loading.gif" data-src="./图片懒加载素材/2.jpg" alt=""/></div>
+    <div class="img-container" ><img src="./图片懒加载素材/loading.gif" data-src="./图片懒加载素材/3.jpg" alt=""/></div>
+    <div class="img-container" ><img src="./图片懒加载素材/loading.gif" data-src="./图片懒加载素材/4.jpg" alt=""/></div>
+    <div class="img-container" ><img src="./图片懒加载素材/loading.gif" data-src="./图片懒加载素材/5.jpg" alt=""/></div>
+    <script>
+        const imgArray = [...document.querySelectorAll('img')];//将所有的img元素放入一个数组
+        
+        lazyLoad();//用户初次加载页面执行懒加载
+        function lazyLoad(){
+            //定义懒加载函数
+            for(var i = 0; i < imgArray.length; i++){
+                //遍历所有的图片资源
+                const element = imgArray[i];
+                //获取当前遍历到的图片,判断是否在视口内
+                if(isInVisibleArea(element)){
+                    //如果在视口内，将图片的路径赋值给它的src
+                    element.src = element.dataset.src;
+                    //从数组中删除当前已经被加载的图片，并且索引值-1
+                    imgArray.splice(i--,1);
+                }
+            }
+            console.log('lazyLoad');
+        }
+        //定义判断是否在视口内的函数
+        function isInVisibleArea(el){
+            //获取图片的位置信息
+            const rect = el.getBoundingClientRect();
+            //如果在范围内则返回true
+            return rect.bottom > 0 && rect.top < window.innerHeight;
+        }
+
+        //定义防抖函数
+        function debounce(fn,delay){
+            let timer = null; //将定时器设置为空
+
+            return function(){
+                //判断定时器是否存在
+                if(timer){
+                    //如果存在则清除定时器
+                    clearTimeout(timer);
+                }
+                //重新设置定时器
+                timer = setTimeout(()=>{
+                    fn.apply(this,arguments);//调用函数，执行函数
+                    //执行之后清除定时器
+                    timer = null;
+                },delay)
+            };
+        }
+
+        window.onscroll = debounce(lazyLoad,200);//当用户滚动屏幕时执行懒加载
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .img-container{
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container"><img src="./images/1.png" alt=""></div>
+    <script>
+        //将图片位置存入数组
+        var imgArray = 
+        [
+            "./images/2.jpg",
+            "./images/3.jpg",
+            "./images/4.jpg",
+            "./images/5.jpg",
+            "./images/6.jpg",
+            "./images/7.jpg",
+            "./images/8.jpg",
+            "./images/9.jpg",
+            "./images/10.jpg",
+            "./images/11.jpg",
+            "./images/12.jpg",
+        ]
+
+        //定义一个数组存储已经加载过的图片
+        var preLoadedImages = [];
+        //定义变量存储当前图片的位置
+        var i= 0;
+        //找到图片对象
+        var img = document.querySelector("img");
+
+        //预加载三张图片
+        preLoadImages(i,3);
+
+        img.onclick = function(){
+            //判断是否是最后一张，如果不是，预加载后面三张
+            if(i < imgArray.length){
+                if(!preLoadedImages.includes(imgArray[i])){
+                    preLoad(imgArray[i]);
+                }
+                img.src = imgArray[i] + '?rand=' + Math.random();
+                i++;
+                preLoadImages(i,3);
+            }
+            console.log(img.src)
+        }
+
+        //定义预加载函数
+        function preLoad(src){
+            //如果图片的路径不在已经加载过得图片的数组内,进行预加载
+            if(!preLoadedImages.includes(src)){
+                const img = new Image();
+                img.src = src;
+                //将路径添加到已经加载过的图片数组内
+                preLoadedImages.push(src);
+            }
+        }
+
+        //判断是否满足预加载条件
+        function preLoadImages(startIndex,num){
+            for(var j = 0; j < num; j++){
+                if(startIndex + j <  imgArray.length){
+                    preLoad(imgArray[startIndex+j]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
