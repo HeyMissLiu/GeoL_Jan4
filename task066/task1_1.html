@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: olivedrab;
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box"></div>
+  </body>
+  <script>
+    //获取box
+    const box = document.getElementById("box");
+    //定义点击事件
+    box.addEventListener("click", () => {
+      box.style.transform = "translate(200px,0)";
+      //0.5s后向下移动
+      setTimeout(() => {
+        box.style.transform = "translate(200px,200px)";
+        //0.5s后向左移动
+        setTimeout(() => {
+          box.style.transform = "translate(0,200px)";
+          //0.5s后向上移动回到原位
+          setTimeout(() => {
+            box.style.transform = "translate(0,0)";
+          }, 500);
+        }, 500);
+      }, 500);
+    });
+  </script>
+</html>

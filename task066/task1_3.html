@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        height: 200px;
+        width: 200px;
+        background-color: olivedrab;
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box"></div>
+  </body>
+  <script>
+    //获取操作对象
+    const box = document.getElementById("box");
+
+    //定义move函数
+    const boxMove = (obj, x, y) => {
+      obj.style.transform = `translate(${x}px,${y}px)`;
+      //返回promise，为成功态
+      return new Promise((resolve) => {
+        obj.ontransitionend = () => {
+          resolve();
+        };
+      });
+
+    }
+
+      //定义点击事件
+      box.onclick =  function(){
+        boxMove(this, 200, 0)
+          .then(() => {
+            return boxMove(this, 200, 200);
+          })
+          .then(() => {
+            return boxMove(this, 0, 200);
+          })
+          .then(() => {
+            return boxMove(this, 0, 0);
+          });
+      };
+  </script>
+</html>
