@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				text-align: center;
+			}
+			form {
+				display: inline-block;
+				margin: 0 auto;
+			}
+			.left {
+				text-align: left;
+			}
+			.green {
+				background-color: green;
+			}
+			.red {
+				background-color: red;
+			}
+			button {
+				border: none;
+				color: #fff;
+				border-radius: 5px;
+				padding: 5px 10px;
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+			button:hover {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="#" method="get">
+			<table>
+				<tr>
+					<td>用户名:</td>
+					<td><input type="text" name="username" placeholder="请输入用户名" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="left">
+						<button class="green">登录</button>
+						<button class="red">删除</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+        <script>
+            //获取input元素
+            const input = document.querySelector('input');
+            //获取删除按钮
+            const delBtn = document.querySelector('.red');
+            //获取登录按钮 
+            const loginBtn = document.querySelector('.green');
+            //给登录按钮绑定事件
+            loginBtn.addEventListener('click', function(){
+                //获取input的值,防止多次使用DOM
+                const value = input.value;
+                //判断是否为空
+                if(value === ''){
+                    //提示用户输入不能为空
+                    alert('用户名不能为空');
+                    return;
+                }else{
+                    //将用户输入的值保存到localStorage中
+                    localStorage.setItem("username",value);
+                }
+            })
+            //给删除按钮绑定事件
+            delBtn.addEventListener('click', function(){
+                //删除localStorage中的值
+                delete localStorage.username;
+                //清空input的值
+                input.value = '';
+            })
+            var username = localStorage.getItem("username");
+            input.value = username;
+        </script>
+	</body>
+</html>

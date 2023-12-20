@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./cookie.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            margin: 20px auto;
+            text-align: center;
+            height: 80px;
+            width: 300px;
+            position: relative;
+        }
+        .subBtn{
+            background-color: olivedrab;
+            width: 50px;
+            height: 25px;
+            border-radius: 5px;
+            position: absolute;
+            left: 50px;
+            top: 40px;
+            color: rgb(234, 231, 231);
+        }
+        .delBtn{
+            background-color: orangered;
+            width: 50px;
+            height: 25px;
+            border-radius: 5px;
+            position: absolute;
+            right: 50px;
+            top: 40px;
+            color: rgb(234, 231, 231);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">用户名：<input type="text" placeholder="请输入用户名" id="input" ></form>
+        <button id="subBtn" class="subBtn">提交</button>
+        <button id="delBtn" class="delBtn">删除</button>
+    </div>
+    <script>
+        //获取输入框
+        const input = document.getElementById('input');
+        //获取提交按钮
+        const subBtn = document.getElementById('subBtn');
+        //获取删除按钮
+        const delBtn = document.getElementById('delBtn');
+        //定义提交按钮点击事件
+        subBtn.addEventListener('click',function(){
+            //获取用户名
+            const username = input.value;
+            //判断用户名是否为空
+            if(!username){
+                alert('用户名不能为空');
+                return;
+            }else{
+                //把用户信息设置为cookie，并保存一周
+                setCookie('username', username, { maxAge : 7*24*60*60 });
+            }
+        })
+        //定义删除按钮点击事件
+        delBtn.addEventListener('click',function(){
+            //删除cookie
+            deleteCookie('username');
+            //将输入框置空
+            input.value = '';
+        })
+        //如果cookie有值，将值传到输入框
+        let content = getCookie('username');
+        if(content){
+            input.value = content;
+        }
+    </script>
+</body>
+</html>

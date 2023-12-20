@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>这是第<span id="count"></span>次访问页面</h1>
+    <script>
+        //获取span标签
+        const span = document.getElementById('count');
+        //使用localStorage查询count的值
+        let count= localStorage.getItem('count');
+        if(count === 'null'){
+            count = 0;
+            //第一次进入该页面，新建localStorage
+            localStorage.setItem('count',count);
+        }else{
+            count++;
+            localStorage.setItem('count',count);
+        }
+        span.innerText = count;
+    </script>
+</body>
+</html>
