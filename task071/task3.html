@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./axios.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      h2 {
+        font-weight: normal;
+      }
+      h2 .rank,
+      h2 a {
+        font-weight: bold;
+      }
+      .score {
+        font-weight: bold;
+        color: red;
+      }
+      .person-number {
+        font-style: italic;
+        font-weight: bold;
+      }
+      p {
+        margin-bottom: 50px;
+      }
+      div.container {
+        width: 1000px;
+        margin: 50px auto;
+      }
+      .actor {
+        font-style: italic;
+        color: blue;
+      }
+      .show-date {
+        font-weight: bold;
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <h1>豆瓣电影热度top10</h1>
+    </div>
+    <script>
+      //获取 container 元素
+      const container = document.getElementById("container");
+
+      //定义函数，获取字符串中的数字
+      function getNumberFromString(String) {
+        //定义正则
+        const reg = /\d+/;
+        const number = String.match(reg)[0];
+        return number;
+      }
+      //定义函数，从数组中取出日期数据
+      function getDateFromString(String) {
+        //字符串转数组，用 / 分隔
+        const arr = String.split("/");
+        //去除每个元素的空格
+        const Arr = arr.map((item) => item.trim());
+        //定义正则表达式
+        const reg = /\d{4}-\d{2}-\d{2}/;
+        //匹配符合正则的数据
+        const dateArr = Arr.filter((item) => reg.test(item));
+        //将数据拼接为字符串
+        const dateStr = dateArr.join("/");
+        return dateStr;
+      }
+      //定义函数，获取数组中的非日期数据
+      function removeDateFromString(String) {
+        //字符串转数组，用 / 分隔
+        const arr = String.split("/");
+        //去除每个元素的空格
+        const Arr = arr.map((item) => item.trim());
+        //定义正则表达式
+        const reg = /\d{4}-\d{2}-\d{2}/;
+        //匹配不符合正则的数据
+        const dateArr = Arr.filter((item) => !reg.test(item));
+        //将数据拼接为字符串
+        const dateStr = dateArr.join("/");
+        return dateStr;
+      }
+
+      //使用 fetch 获取数据
+      fetch("https://www.happy-learning.cn/douban/index.php", {
+        method: "get",
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          //获取数据，数组形式
+          const data = json.data;
+          //定义空数组
+          let str = "";
+          //遍历数组
+          data.forEach((movieObj, index) => {
+            //将数组内的信息对象单独拿出来，便于得到后面的数据
+            const data_info = movieObj["info"];
+            str += `<h2>
+				<span class="rank">排行: ${String(index + 1).padStart(3, 0)}</span> <a href=${
+              data_info["url"]
+            }>《${movieObj["title"]}》</a> 评分:
+				<span class="score">${
+          data_info["pingfen"]
+        }</span>(<span class="person-number">${getNumberFromString(
+              data_info["pingjia"]
+            )}</span>人评价)
+			</h2>
+			<div><img src=${data_info["imgurl"]} alt="" /></div>
+			<h3>上映时间: <span class="show-date">${getDateFromString(
+        data_info["yanyuan"]
+      )}</span></h3>
+			<p>
+				<b>演员:</b>
+				<span class="actor"
+					>${removeDateFromString(data_info["yanyuan"])}</span
+				>
+			</p>`;
+          });
+          container.innerHTML += str;
+        })
+        .catch((err) => console.log("数据请求失败"));
+    </script>
+  </body>
+</html>
